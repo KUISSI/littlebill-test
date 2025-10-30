@@ -45,10 +45,14 @@ function App() {
         </button>
       </form>
       {loading && <p>Loading...</p>}
-      {error && <p style={{color: 'red'}}>{error}</p>}
+      {error && <p style={{ color: 'red' }}>{error}</p>}
       <div>
         <h2>Results</h2>
-        <pre>{JSON.stringify(data, null, 2)}</pre>
+        <ul>
+          {data.map((c, i) => (
+            <li key={i}>{c.prenom} {c.nom}</li>
+          ))}
+        </ul>
       </div>
     </div>
   )
