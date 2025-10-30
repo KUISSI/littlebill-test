@@ -50,3 +50,18 @@ async def search_customers(query: str):
             raise HTTPException(status_code=exc.response.status_code, detail=str(exc))
         except Exception as e:
             raise HTTPException(status_code=500, detail=str(e))
+        
+@router.get("/sales")
+async def get_customers_sales(customer_id: int) :
+    headers = get_auth_header()
+    async with httpx.AsyncClient() as client:
+        try:
+            url = f"{HIBOUTIK_BASE_URL}customer/{customer_id}/sales"
+            response = await client.get(url, headers=headers)
+            response.raise_for_status()
+            return response.json()
+        
+        except httpx.HTTPStatusError as exc:
+            raise HTTPException(status_code=exc.response.status_code, detail=exc.response.text)
+        except Exception as e:
+            raise HTTPException(status_code=500, detail=str(e))
