@@ -1,0 +1,41 @@
+# Environnement virtuel Python
+venv/
+.env
+*.env
+
+# Fichiers de cache Python
+__pycache__/
+*.pyc
+
+# Fichiers de logs
+*.log
+
+# Fichiers de configuration IDE
+.vscode/
+.idea/
+*.swp
+
+# Fichiers générés
+.DS_Store
+
+# Base de données locale (exemple)
+*.sqlite3
+*.db
+
+# Byte-compiled / optimized / DLL files
+*.py[cod]
+*.pyo
+*.pyd
+*.whl
+
+# Distribution / packaging
+.Python
+env/
+ENV/
+env.bak/
+venv.bak/
+*.egg-info/
+dist/
+build/
+
+
