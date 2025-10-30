@@ -1,19 +1,16 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from app.api import router
-
+from app.hiboutik_customer import router as customer_router
 app = FastAPI()
 
+# Middleware CORS pour autoriser toutes les origines (pratique en dev)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=["*"],  # En prod, précise tes origines !
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-app.include_router(router)
-
-@app.get("/")
-def read_root():
-    return {"message": "Bienvenue sur l'API LittleBill Test"}
+# Inclusion du router pour les routes /customers/
+app.include_router(customer_router)
