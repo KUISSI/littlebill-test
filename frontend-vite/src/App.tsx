@@ -4,7 +4,7 @@ import './App.css'
 type Customer = {
   nom: string
   prenom: string
-  customers_id: number // adapte ce champ si besoin, selon la réponse de ton backend
+  customers_id: number
 }
 
 type Sale = {
@@ -55,7 +55,6 @@ function App() {
     setSalesError(null)
     setSalesLoading(true)
     try {
-      // Adapte le champ customers_id si besoin
       const response = await fetch(`${apiUrl}/customer/${customer.customers_id}/sales`)
       if (!response.ok) {
         throw new Error("Erreur lors du chargement des ventes")
