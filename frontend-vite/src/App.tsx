@@ -35,7 +35,7 @@ function App() {
       <ul>
         {customers.map((customer, index) => (
           <li key={index}>
-            {customer.first_name}. {customer.last_name}
+            {customer.first_name} {customer.last_name}
           </li>
         ))}
       </ul>
