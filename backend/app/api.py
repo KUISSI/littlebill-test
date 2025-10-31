@@ -34,6 +34,7 @@ async def search_customers(query: str):
             
             filtered = [
                 {
+                    "id": customer.get("customers_id"),
                     "first_name": customer.get("first_name", ""),
                     "last_name": customer.get("last_name", "")
                 }

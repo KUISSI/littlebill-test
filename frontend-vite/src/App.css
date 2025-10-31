@@ -7,3 +7,15 @@
 input {
   border: 2px solid #0a7;
 }
+
+#customer {
+  cursor: pointer;
+}
+
+#customer:hover {
+  text-decoration: underline;
+}
+
+hr {
+  border: 1px solid #0a7;
+}
