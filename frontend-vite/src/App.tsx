@@ -11,7 +11,9 @@ type Sale = {
   sale_id: number
   date: string
   total: number
-  // ajoute d'autres champs selon la réponse réelle de l'API
+  currency: string
+  store_id: number
+  customer_id: number
 }
 
 function App() {
@@ -24,9 +26,9 @@ function App() {
   const [salesLoading, setSalesLoading] = useState(false)
   const [salesError, setSalesError] = useState<string | null>(null)
 
+  // Mettre dans .env : VITE_API_URL=http://localhost:8000
   const apiUrl = import.meta.env.VITE_API_URL
 
-  // Recherche clients
   const handleSearch = async (event: React.FormEvent) => {
     event.preventDefault()
     setLoading(true)
@@ -48,7 +50,6 @@ function App() {
     }
   }
 
-  // Sélection d'un client → charge ses ventes
   const handleCustomerClick = async (customer: Customer) => {
     setSelectedCustomer(customer)
     setSales([])
@@ -107,8 +108,7 @@ function App() {
             {sales.length === 0 && !salesLoading && <li>Aucune vente trouvée</li>}
             {sales.map((s, i) => (
               <li key={i}>
-                {/* adapte les champs à ta structure */}
-                Vente n°{s.sale_id}, date: {s.date}, total: {s.total}
+                Vente n°{s.sale_id}, date: {s.date}, total: {s.total} {s.currency}, magasin: {s.store_id}
               </li>
             ))}
           </ul>
