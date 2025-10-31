@@ -1,5 +1,6 @@
 from fastapi import APIRouter, HTTPException
 import httpx
+# from db import db
 from base64 import b64encode
 import os 
 from dotenv import load_dotenv
@@ -43,7 +44,7 @@ async def search_customers(query: str):
                 or query.lower() in customer.get("last_name", "").lower()
             ]
 
-
+            # await db["customers"].insert_many(filtered)
             
             return filtered
 
@@ -63,6 +64,14 @@ async def get_customers_sales(customer_id: int, offset: int = 0) :
             sales = response.json()
 
             paginated_sales = sales[offset:offset + 5]
+
+
+            # await db["sales"].update_one(
+            #     {"customer_id": customer_id},
+            #     {"$set": {"sales": sales}},
+            #     upsert=True
+            # )
+
             return paginated_sales
         
         except httpx.HTTPStatusError as exc:
